@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/scan', function () {
-    return view('scan');
+Route::get('scan', function () {
+    return view('scan2');
 });
