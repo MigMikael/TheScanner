@@ -9,19 +9,18 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Janusz Białobrzewski" />
-    <!--                                                               -->
-    <!-- Consider inlining CSS to reduce the number of requested files -->
-    <!--                                                               -->
-    <link type="text/css" rel="stylesheet" href="{{ URL::asset('public/css/jsqrscanner.nocache.js') }}">
-
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
     <title>JsQRScanner example</title>
 
-    <!--                                           -->
-    <!-- This script loads your compiled module.   -->
-    <script type="text/javascript" src="{{ URL::asset('public/js/jsqrscanner.nocache.js') }}"></script>
+    @if (getenv("APP_ENV") == 'local')
+        <link type="text/css" rel="stylesheet" href="{{ URL::asset('public/css/JsQRScanner.css') }}">
+        <script type="text/javascript" src="{{ URL::asset('public/js/jsqrscanner.nocache.js') }}"></script>
+    @else
+        <link type="text/css" rel="stylesheet" href="https://the-scanner.herokuapp.com/public/css/JsQRScanner.css">
+        <script type="text/javascript" src="https://the-scanner.herokuapp.com/public/js/jsqrscanner.nocache.js"></script>
+    @endif
 </head>
 
 <body>
