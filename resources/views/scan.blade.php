@@ -18,8 +18,8 @@
         <link type="text/css" rel="stylesheet" href="{{ URL::asset('public/css/JsQRScanner.css') }}">
         <script type="text/javascript" src="{{ URL::asset('public/js/jsqrscanner.nocache.js') }}"></script>
     @else
-        <link type="text/css" rel="stylesheet" href="https://the-scanner.herokuapp.com/public/css/JsQRScanner.css">
-        <script type="text/javascript" src="https://the-scanner.herokuapp.com/public/js/jsqrscanner.nocache.js"></script>
+        <link type="text/css" rel="stylesheet" href="{{ secure_asset('public/css/JsQRScanner.css') }}">
+        <script type="text/javascript" src="{{ secure_asset('public/js/jsqrscanner.nocache.js') }}"></script>
     @endif
 </head>
 
