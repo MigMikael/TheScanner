@@ -15,11 +15,11 @@
     <title>JsQRScanner example</title>
 
     @if (getenv("APP_ENV") == 'local')
-        <link type="text/css" rel="stylesheet" href="{{ URL::asset('public/css/JsQRScanner.css') }}">
-        <script type="text/javascript" src="{{ URL::asset('public/js/jsqrscanner.nocache.js') }}"></script>
+        <link type="text/css" rel="stylesheet" href="{{ URL::asset('/css/JsQRScanner.css') }}">
+        <script type="text/javascript" src="{{ URL::asset('/js/jsqrscanner.nocache.js') }}"></script>
     @else
-        <link type="text/css" rel="stylesheet" href="{{ secure_asset('public/css/JsQRScanner.css') }}">
-        <script type="text/javascript" src="{{ secure_asset('public/js/jsqrscanner.nocache.js') }}"></script>
+        <link type="text/css" rel="stylesheet" href="{{ secure_asset('/css/JsQRScanner.css') }}">
+        <script type="text/javascript" src="{{ secure_asset('/js/jsqrscanner.nocache.js') }}"></script>
     @endif
 </head>
 
