@@ -77,7 +77,21 @@
             var scannedTextMemo = document.getElementById("scannedTextMemo");
             if(scannedTextMemo)
             {
+                document.getElementById("scanner").style.border = "thick solid #00FF00";
                 scannedTextMemo.value = scannedText;
+
+                var data = new FormData();
+                data.append('situation', 'register');
+                data.append('user_token', scannedText);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://posttestserver.com/pts.php', true);
+                xhr.onload = function () {
+                    // do something to response
+                    console.log(this.responseText);
+                    document.getElementById("scanner").style.border = "thick solid #FFFFFF";
+                };
+                xhr.send(data);
             }
             var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
             if(scannedTextMemoHist)

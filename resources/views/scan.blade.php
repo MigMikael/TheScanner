@@ -46,8 +46,7 @@
     </div>
     <br>
     <div class="row-element">
-        <div class="qrscanner" id="scanner">
-        </div>
+        <div class="qrscanner" id="scanner"></div>
     </div>
     <div class="row-element">
         <div class="form-field form-field-memo">
