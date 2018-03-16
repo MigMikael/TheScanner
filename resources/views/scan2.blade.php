@@ -10,9 +10,29 @@
     @if (getenv("APP_ENV") == 'local')
         <link type="text/css" rel="stylesheet" href="{{ URL::asset('/css/JsQRScanner.css') }}">
         <script type="text/javascript" src="{{ URL::asset('/js/jsqrscanner.nocache.js') }}"></script>
+        <link rel="manifest" href="{{ URL::asset('/manifest.json') }}">
+
+        <!-- Add to home screen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Scanner PWA">
+        <link rel="apple-touch-icon" href="{{ URL::asset('/images/icons8-qr-code-152.png') }}">
+
+        <meta name="msapplication-TileImage" content="{{ URL::asset('/images/icons8-qr-code-144.png') }}">
+        <meta name="msapplication-TileColor" content="#2F3BA2">
     @else
         <link type="text/css" rel="stylesheet" href="{{ secure_asset('/css/JsQRScanner.css') }}">
         <script type="text/javascript" src="{{ secure_asset('/js/jsqrscanner.nocache.js') }}"></script>
+        <link rel="manifest" href="{{ secure_asset('/manifest.json') }}">
+
+        <!-- Add to home screen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Scanner PWA">
+        <link rel="apple-touch-icon" href="{{ secure_asset('/images/icons8-qr-code-152.png') }}">
+
+        <meta name="msapplication-TileImage" content="{{ secure_asset('/images/icons8-qr-code-144.png') }}">
+        <meta name="msapplication-TileColor" content="#2F3BA2">
     @endif
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -116,5 +136,10 @@
             }
         }
     </script>
+    @if (getenv("APP_ENV") == 'local')
+        <script src="{{ URL::asset('/scripts/app.js') }}" async></script>
+    @else
+        <script src="{{ secure_asset('/scripts/app.js') }}" async></script>
+    @endif
 </body>
 </html>
