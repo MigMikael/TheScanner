@@ -54,22 +54,22 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/1') }}">Booth 1</a>
+                    <a class="nav-link" href="{{ url('/scan/1') }}">Booth1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/2') }}">Booth 2</a>
+                    <a class="nav-link" href="{{ url('/scan/2') }}">Booth2</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/3') }}">Booth 3</a>
+                    <a class="nav-link" href="{{ url('/scan/3') }}">Booth3</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/4') }}">Booth 4</a>
+                    <a class="nav-link" href="{{ url('/scan/4') }}">Booth4</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/5') }}">Booth 5</a>
+                    <a class="nav-link" href="{{ url('/scan/5') }}">Booth5</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/6') }}">Booth 6</a>
+                    <a class="nav-link" href="{{ url('/scan/6') }}">Booth6</a>
                 </li>
             </ul>
         </div>

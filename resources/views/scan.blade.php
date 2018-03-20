@@ -13,9 +13,11 @@
         .qrscanner {
             width: 100%;
             height: 40vh;
+            border: solid;
+            overflow: hidden;
         }
         .first-row {
-            padding-top: 20px;
+            padding-top: 5%;
         }
         .bg-green {
             background-color: #40826d!important;
@@ -32,12 +34,12 @@
             </div>
         </noscript>
         <div class="row first-row">
-            <div class="col-md-6 text-center">
+            <div class="col-lg-12 text-center">
                 <h1><b>Scanner</b></h1>
                 <p>Point the camera to QR code</p>
                 <div class="qrscanner" id="scanner"></div>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-lg-12 text-center">
                 <hr>
                 <p>Scanned Text</p>
                 <textarea id="scannedTextMemo" rows="3" readonly></textarea>
