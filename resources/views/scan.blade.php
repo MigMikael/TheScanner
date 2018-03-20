@@ -1,110 +1,105 @@
-<!doctype html>
-<!-- The DOCTYPE declaration above will set the     -->
-<!-- browser's rendering engine into                -->
-<!-- "Standards Mode". Replacing this declaration   -->
-<!-- with a "Quirks Mode" doctype is not supported. -->
+@extends('main')
 
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Janusz Białobrzewski" />
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
-    <title>JsQRScanner example</title>
+@section('style')
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            color: #40826d;
+            background-color: #d6f7eb;
+        }
+        textarea {
+            width: 100%;
+        }
+        .qrscanner {
+            width: 100%;
+            height: 40vh;
+        }
+        .first-row {
+            padding-top: 20px;
+        }
+        .bg-green {
+            background-color: #40826d!important;
+        }
+    </style>
+@stop
 
+@section('content')
+    <div class="container-fluid">
+        <noscript>
+            <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+                Your web browser must have JavaScript enabled
+                in order for this application to display correctly.
+            </div>
+        </noscript>
+        <div class="row first-row">
+            <div class="col-md-6 text-center">
+                <h1><b>Scanner</b></h1>
+                <p>Point the camera to QR code</p>
+                <div class="qrscanner" id="scanner"></div>
+            </div>
+            <div class="col-md-6 text-center">
+                <hr>
+                <p>Scanned Text</p>
+                <textarea id="scannedTextMemo" rows="3" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function onQRCodeScanned(scannedText)
+        {
+            $('#scannedTextMemo').val(scannedText);
+            var dialog = bootbox.dialog({
+                message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> Sending...</div>',
+                closeButton: true,
+                backdrop: true,
+                size: 'small'
+            });
+            var request = $.ajax({
+                url: 'https://posttestserver.com/pts.php',
+                type: 'post',
+                data: {'situation' : 'register', 'user_token' : scannedText}
+            });
+
+            request.done(function (response, textStatus, jqXHR){
+                console.log("status : " + textStatus);
+                console.log("data : " + response);
+                dialog.find('.bootbox-body').html('<div class="text-center">SUCCESS</div>');
+                dialog.modal('hide');
+            });
+
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                dialog.modal('hide');
+                console.error(
+                    "The following error occurred: "+
+                    textStatus, errorThrown
+                );
+                var dialog2 = bootbox.dialog({
+                    message: '<div class="text-center" style="color: #FF0000">'+ textStatus +' scan again</div>',
+                    closeButton: true,
+                    backdrop: true,
+                    size: 'small'
+                });
+            });
+
+            request.always(function () {
+
+            });
+        }
+
+        function JsQRScannerReady()
+        {
+            var jbScanner = new JsQRScanner(onQRCodeScanned);
+            jbScanner.setSnapImageMaxSize(300);
+            var scannerParentElement = document.getElementById("scanner");
+            if(scannerParentElement)
+            {
+                jbScanner.appendTo(scannerParentElement);
+            }
+        }
+    </script>
     @if (getenv("APP_ENV") == 'local')
-        <link type="text/css" rel="stylesheet" href="{{ URL::asset('/css/JsQRScanner.css') }}">
-        <script type="text/javascript" src="{{ URL::asset('/js/jsqrscanner.nocache.js') }}"></script>
+        <script src="{{ URL::asset('/scripts/app.js') }}" async></script>
     @else
-        <link type="text/css" rel="stylesheet" href="{{ secure_asset('/css/JsQRScanner.css') }}">
-        <script type="text/javascript" src="{{ secure_asset('/js/jsqrscanner.nocache.js') }}"></script>
+        <script src="{{ secure_asset('/scripts/app.js') }}" async></script>
     @endif
-</head>
-
-<body>
-
-<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
-<noscript>
-    <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-        Your web browser must have JavaScript enabled
-        in order for this application to display correctly.
-    </div>
-</noscript>
-
-<div class="row-element-set row-element-set-QRScanner">
-    <h1>JsQRScanner example</h1>
-    <div class="row-element">
-        <div class="FlexPanel detailsPanel QRScannerShort">
-            <div class="FlexPanel shortInfoPanel">
-                <div class="gwt-HTML">
-                    Point the webcam to a QR code.
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row-element">
-        <div class="qrscanner" id="scanner"></div>
-    </div>
-    <div class="row-element">
-        <div class="form-field form-field-memo">
-            <div class="form-field-caption-panel">
-                <div class="gwt-Label form-field-caption">
-                    Scanned text
-                </div>
-            </div>
-            <div class="FlexPanel form-field-input-panel">
-            <textarea id="scannedTextMemo" class="textInput form-memo form-field-input textInput-readonly" rows="3" readonly>
-            </textarea>
-            </div>
-        </div>
-        <div class="form-field form-field-memo">
-            <div class="form-field-caption-panel">
-                <div class="gwt-Label form-field-caption">
-                    Scanned text history
-                </div>
-            </div>
-            <div class="FlexPanel form-field-input-panel">
-            <textarea id="scannedTextMemoHist" class="textInput form-memo form-field-input textInput-readonly" value="" rows="6" readonly>
-            </textarea>
-            </div>
-        </div>
-    </div>
-    <br>
-    <a style="font-weight: bold;" href="https://github.com/jbialobr/JsQRScanner">The source code is hosted on GitHub</a>
-</div>
-<script type="text/javascript">
-    function onQRCodeScanned(scannedText)
-    {
-        var scannedTextMemo = document.getElementById("scannedTextMemo");
-        if(scannedTextMemo)
-        {
-            scannedTextMemo.value = scannedText;
-        }
-        var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
-        if(scannedTextMemoHist)
-        {
-            scannedTextMemoHist.value = scannedTextMemoHist.value + '\n' + scannedText;
-        }
-    }
-
-    //this function will be called when JsQRScanner is ready to use
-    function JsQRScannerReady()
-    {
-        //create a new scanner passing to it a callback function that will be invoked when
-        //the scanner succesfully scan a QR code
-        var jbScanner = new JsQRScanner(onQRCodeScanned);
-        //reduce the size of analyzed image to increase performance on mobile devices
-        jbScanner.setSnapImageMaxSize(300);
-        var scannerParentElement = document.getElementById("scanner");
-        if(scannerParentElement)
-        {
-            //append the jbScanner to an existing DOM element
-            jbScanner.appendTo(scannerParentElement);
-        }
-    }
-</script>
-</body>
-</html>
+@stop

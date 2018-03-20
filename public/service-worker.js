@@ -4,6 +4,7 @@ var filesToCache = [
     '/index.php',
     '/scripts/app.js',
     '/js/jsqrscanner.nocache.js',
+    '/js/bootbox.min.js',
     '/css/app.css',
     '/css/JsQRScanner.css'
 ];

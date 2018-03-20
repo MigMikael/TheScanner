@@ -12,9 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('scan2');
+    return view('scan');
 });
 
-Route::get('scan', function () {
-    return view('scan2');
-});
+Route::get('scan/{position}', 'ScanController@scanPosition');
