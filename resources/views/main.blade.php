@@ -5,10 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TheScanner</title>
+    <title>Scanner</title>
     <meta name="theme-color" content="#1e8b7f">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -47,30 +48,54 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-green navbar-dark fixed-bottom">
-        <a class="navbar-brand" href="{{ url('/') }}">Register</a>
+        <a class="navbar-brand" href="{{ url('/scan/'.$position) }}">{{ $position }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
+
+                @if($position != 'Register')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/1') }}">Booth1</a>
+                    <a class="nav-link" href="{{ url('/scan/Register') }}">Register</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth1')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/2') }}">Booth2</a>
+                    <a class="nav-link" href="{{ url('/scan/Booth1') }}">Booth1</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth2')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/3') }}">Booth3</a>
+                    <a class="nav-link" href="{{ url('/scan/Booth2') }}">Booth2</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth3')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/4') }}">Booth4</a>
+                    <a class="nav-link" href="{{ url('/scan/Booth3') }}">Booth3</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth4')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/5') }}">Booth5</a>
+                    <a class="nav-link" href="{{ url('/scan/Booth4') }}">Booth4</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth5')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/6') }}">Booth6</a>
+                    <a class="nav-link" href="{{ url('/scan/Booth5') }}">Booth5</a>
                 </li>
+                @endif
+
+                @if($position != 'Booth6')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/scan/Booth6') }}">Booth6</a>
+                </li>
+                @endif
             </ul>
         </div>
     </nav>

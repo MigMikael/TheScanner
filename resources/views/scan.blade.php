@@ -51,7 +51,7 @@
         {
             $('#scannedTextMemo').val(scannedText);
             var dialog = bootbox.dialog({
-                message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> Sending...</div>',
+                message: '<div class="text-center"><i class="fa fa-spin fa-spinner" style="font-size: 24px"></i> Sending...</div>',
                 closeButton: true,
                 backdrop: true,
                 size: 'small'
@@ -59,7 +59,7 @@
             var request = $.ajax({
                 url: 'https://posttestserver.com/pts.php',
                 type: 'post',
-                data: {'situation' : 'register', 'user_token' : scannedText}
+                data: {'position' : '{{ $position }}', 'user_token' : scannedText}
             });
 
             request.done(function (response, textStatus, jqXHR){
