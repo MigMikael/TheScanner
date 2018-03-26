@@ -57,7 +57,7 @@
                 size: 'small'
             });
             var request = $.ajax({
-                url: 'http://pi.cp.su.ac.th/PI/QR/post_request.php',
+                url: 'https://pi.cp.su.ac.th/PI/QR/post_request.php',
                 type: 'post',
                 data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
             });
