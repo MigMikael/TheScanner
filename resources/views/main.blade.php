@@ -54,7 +54,6 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-
                 @if($position != 'Register')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/scan/Register') }}">Register</a>

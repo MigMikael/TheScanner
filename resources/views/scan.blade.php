@@ -51,13 +51,16 @@
         {
             $('#scannedTextMemo').val(scannedText);
             var dialog = bootbox.dialog({
-                message: '<div class="text-center"><i class="fa fa-spin fa-spinner" style="font-size: 36px"><br></i> Sending...</div>',
+                message: '<div class="text-center" style="font-size: 60px"><i class="fa fa-spin fa-spinner"><br></i> Sending...</div>',
                 closeButton: true,
                 backdrop: true,
-                size: 'small'
+                size: 'large',
+                onEscape: true
             });
+            var urls = 'https://the-scanner.herokuapp.com/scan/result';
+            //var urls = 'http://localhost:8000/scan/result';
             var request = $.ajax({
-                url: 'https://pi.cp.su.ac.th/PI/QR/post_request.php',
+                url: urls,
                 type: 'post',
                 data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
             });
@@ -65,33 +68,28 @@
             request.done(function (response, textStatus, jqXHR){
                 console.log("status : " + textStatus);
                 console.log("data : " + response);
-                dialog.find('.bootbox-body').html('<div class="text-center">SUCCESS</div>');
+                dialog.find('.bootbox-body').html('<div class="text-center" style="font-size: 60px">SUCCESS</div>');
                 dialog.modal('hide');
             });
 
             request.fail(function (jqXHR, textStatus, errorThrown){
-                dialog.modal('hide');
                 console.error(
                     "The following error occurred: "+
                     textStatus, errorThrown
                 );
-                var dialog2 = bootbox.dialog({
-                    message: '<div class="text-center" style="color: #FF0000">'+ textStatus +' scan again</div>',
-                    closeButton: true,
-                    backdrop: true,
-                    size: 'small'
-                });
+                dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 60px">FAIL</div>');
+                //dialog.modal('hide');
             });
 
             request.always(function () {
-
+                //dialog.modal('hide');
             });
         }
 
         function JsQRScannerReady()
         {
             var jbScanner = new JsQRScanner(onQRCodeScanned);
-            jbScanner.setSnapImageMaxSize(300);
+            jbScanner.setSnapImageMaxSize(200);
             var scannerParentElement = document.getElementById("scanner");
             if(scannerParentElement)
             {

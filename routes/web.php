@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('scan/{position}', 'ScanController@scanPosition');
+
+Route::post('scan/result', 'ScanController@passScanResult');
