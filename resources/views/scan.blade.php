@@ -35,7 +35,7 @@
         </noscript>
         <div class="row first-row">
             <div class="col-lg-12 text-center">
-                <h1><b>Scanner</b></h1>
+                <h1><b>{{ $position }}</b></h1>
                 <p>Point the camera to QR code</p>
                 <div class="qrscanner" id="scanner"></div>
             </div>
@@ -51,15 +51,15 @@
         {
             $('#scannedTextMemo').val(scannedText);
             var dialog = bootbox.dialog({
-                message: '<div class="text-center"><i class="fa fa-spin fa-spinner" style="font-size: 24px"></i> Sending...</div>',
+                message: '<div class="text-center"><i class="fa fa-spin fa-spinner" style="font-size: 36px"><br></i> Sending...</div>',
                 closeButton: true,
                 backdrop: true,
                 size: 'small'
             });
             var request = $.ajax({
-                url: 'https://posttestserver.com/pts.php',
+                url: 'http://pi.cp.su.ac.th/PI/QR/post_request.php',
                 type: 'post',
-                data: {'position' : '{{ $position }}', 'user_token' : scannedText}
+                data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
             });
 
             request.done(function (response, textStatus, jqXHR){
