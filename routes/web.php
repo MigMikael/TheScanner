@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('scan', ['position' => 'Register', 'position_id' => 7]);
 });
 
-Route::post('past_scan_result', 'ScanController@passScanResult');
+Route::post('pass_scan_result', 'ScanController@passScanResult');
 
 Route::get('scan/{position}', 'ScanController@scanPosition');
 
