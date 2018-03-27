@@ -3,6 +3,7 @@ var filesToCache = [
     '/',
     '/index.php',
     '/scripts/app.js',
+    '/js/jquery-3.3.1.min.js',
     '/js/jsqrscanner.nocache.js',
     '/js/bootbox.min.js',
     '/css/app.css',

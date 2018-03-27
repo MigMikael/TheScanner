@@ -44,9 +44,16 @@
                 <p>Scanned Text</p>
                 <textarea id="scannedTextMemo" rows="3" readonly></textarea>
             </div>
+            <div class="col-lg-12 text-center">
+                <button class="btn btn-success btn-lg" onclick="forceReload()">Reload</button>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
+        function forceReload() {
+            window.location.reload(true);
+        }
+
         function onQRCodeScanned(scannedText)
         {
             var substring = "http://", substring2 = 'https://';
@@ -94,6 +101,7 @@
                         "The following error occurred: "+
                         textStatus, errorThrown
                     );
+                    //console.log(jqXHR);
                     dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 70px">FAIL</div>');
                     //dialog.modal('hide');
                 });
