@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('pass_scan_result', 'ScanController@passScanResult');
+Route::post('pass_scan_result', 'ScanController@passScanResult');

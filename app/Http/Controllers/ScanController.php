@@ -19,20 +19,19 @@ class ScanController extends Controller
     public function scanPosition($position)
     {
         //Log::info(getenv("APP_ENV"));
-        return view('scan', [
+        return view('scan2', [
             'position' => $position,
-            'urls' => 'http://pi.cp.su.ac.th/PI/QR/post_request.php'
         ]);
     }
 
     public function passScanResult(Request $request)
     {
-        Log::info(getenv("APP_ENV"));
-        //$position = $request->get('position');
-        //$user_token = $request->get('user_token');
+        //Log::info(getenv("APP_ENV"));
+        $position = $request->get('position');
+        $user_token = $request->get('user_token');
 
-        $position = 7;
-        $user_token = 'aljsdlfajsdlfkjaslf';
+        //$position = 7;
+        //$user_token = 'aljsdlfajsdlfkjaslf';
 
         $curl = curl_init();
 
@@ -49,6 +48,12 @@ class ScanController extends Controller
 
         curl_exec($curl);
         curl_close($curl);
-        return response()->json(['status' => 'success ###']);
+        //return response()->json(['status' => 'success ###']);
+        return redirect()->action('ScanController@scanPosition',['position' => 'Register']);
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
     }
 }
