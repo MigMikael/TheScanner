@@ -49,48 +49,68 @@
     <script type="text/javascript">
         function onQRCodeScanned(scannedText)
         {
-            $('#scannedTextMemo').val(scannedText);
-            var dialog = bootbox.dialog({
-                message: '<div class="text-center" style="font-size: 60px"><i class="fa fa-spin fa-spinner"><br></i> Sending...</div>',
-                closeButton: true,
-                backdrop: true,
-                size: 'large',
-                onEscape: true
-            });
-            //var urls = 'https://the-scanners.herokuapp.com/api/pass_scan_result';
-            //var urls = 'http://localhost:8000/pass_scan_result';
-            var urls = 'https://pi.cp.su.ac.th/PI/QR/post_request.php';
-            var request = $.ajax({
-                url: urls,
-                type: 'post',
-                data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
-            });
+            var substring = "http://", substring2 = 'https://';
+            if(scannedText.indexOf(substring) === -1 && scannedText.indexOf(substring2) === -1){ // normal user token
+                $('#scannedTextMemo').val(scannedText);
+                var dialog = bootbox.dialog({
+                    message: '<div class="text-center" style="font-size: 70px"><i class="fa fa-spin fa-spinner"><br></i> Sending...</div>',
+                    closeButton: true,
+                    backdrop: true,
+                    size: 'large',
+                    onEscape: true
+                });
+                //var urls = 'http://localhost:8000/pass_scan_result';
+                var urls = 'https://pi.cp.su.ac.th/PI/QR/post_request.php';
+                @if ($position == 'Booth1')
+                var position_id = 1;
+                @elseif ($position == 'Booth2')
+                var position_id = 2;
+                @elseif ($position == 'Booth3')
+                var position_id = 3;
+                @elseif ($position == 'Booth4')
+                var position_id = 4;
+                @elseif ($position == 'Booth5')
+                var position_id = 5;
+                @elseif ($position == 'Booth6')
+                var position_id = 6;
+                @elseif ($position == 'Register')
+                var position_id = 7;
+                @endif
+                var request = $.ajax({
+                    url: urls,
+                    type: 'post',
+                    data: {'position' : position_id, 'user_token' : scannedText}
+                });
 
-            request.done(function (response, textStatus, jqXHR){
-                console.log("status : " + textStatus);
-                console.log("data : " + response);
-                dialog.find('.bootbox-body').html('<div class="text-center" style="font-size: 80px">SUCCESS</div>');
-                dialog.modal('hide');
-            });
+                request.done(function (response, textStatus, jqXHR){
+                    console.log("status : " + textStatus);
+                    console.log("data : " + response);
+                    dialog.find('.bootbox-body').html('<div class="text-center" style="font-size: 70px">SUCCESS</div>');
+                    dialog.modal('hide');
+                });
 
-            request.fail(function (jqXHR, textStatus, errorThrown){
-                console.error(
-                    "The following error occurred: "+
-                    textStatus, errorThrown
-                );
-                dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 80px">FAIL</div>');
-                //dialog.modal('hide');
-            });
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    console.error(
+                        "The following error occurred: "+
+                        textStatus, errorThrown
+                    );
+                    dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 70px">FAIL</div>');
+                    //dialog.modal('hide');
+                });
 
-            request.always(function () {
-                //dialog.modal('hide');
-            });
+                request.always(function () {
+                    //dialog.modal('hide');
+                });
+            }else{  // link
+                var win = window.open(scannedText, '_blank');
+                win.focus();
+            }
         }
 
         function JsQRScannerReady()
         {
             var jbScanner = new JsQRScanner(onQRCodeScanned);
-            jbScanner.setSnapImageMaxSize(200);
+            jbScanner.setSnapImageMaxSize(300);
             var scannerParentElement = document.getElementById("scanner");
             if(scannerParentElement)
             {

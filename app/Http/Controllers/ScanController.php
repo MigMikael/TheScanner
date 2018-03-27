@@ -19,7 +19,6 @@ class ScanController extends Controller
     {
         return view('scan', [
             'position' => $position,
-            'position_id' =>$this->position_id[$position]
         ]);
     }
 

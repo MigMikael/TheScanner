@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('scan', ['position' => 'Register', 'position_id' => 7]);
+    return view('scan', ['position' => 'Register']);
 });
 
 Route::get('scan/{position}', 'ScanController@scanPosition');
