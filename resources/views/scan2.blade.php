@@ -17,7 +17,7 @@
             overflow: hidden;
         }
         .first-row {
-            padding-top: 5%;
+            padding-top: 4%;
         }
         .bg-green {
             background-color: #40826d!important;
@@ -44,7 +44,7 @@
                 <p>Scanned Text</p>
                 <form action="http://pi.cp.su.ac.th/PI/QR/post_request.php" method="post">
                     <div class="form-group">
-                        <textarea id="scannedTextMemo" name="user_token" rows="3" readonly></textarea>
+                        <textarea id="scannedTextMemo" name="user_token" rows="2" readonly></textarea>
                     </div>
                     @if ($position == 'Booth1')
                         <input type="hidden" name="position" value="1">
@@ -69,13 +69,13 @@
     <script type="text/javascript">
         function onQRCodeScanned(scannedText)
         {
-            $('#scannedTextMemo').val(scannedText);
+            $('#scannedTextMemo').val(scannedText).css({'background-color':'#28a745', 'color':'#FFFFFF'});
         }
 
         function JsQRScannerReady()
         {
             var jbScanner = new JsQRScanner(onQRCodeScanned);
-            jbScanner.setSnapImageMaxSize(300);
+            jbScanner.setSnapImageMaxSize(400);
             var scannerParentElement = document.getElementById("scanner");
             if(scannerParentElement)
             {
