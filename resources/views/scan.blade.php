@@ -57,7 +57,7 @@
                 size: 'large',
                 onEscape: true
             });
-            var urls = 'https://the-scanner.herokuapp.com/past_scan_result';
+            var urls = 'https://the-scanner.herokuapp.com/pass_scan_result';
             //var urls = 'http://localhost:8000/pass_scan_result';
             var request = $.ajax({
                 url: urls,
