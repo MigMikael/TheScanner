@@ -127,8 +127,8 @@
         }
     </script>
     @if (getenv("APP_ENV") == 'local')
-        <script src="{{ URL::asset('/scripts/app.js') }}" async></script>
+        {{--<script src="{{ URL::asset('/scripts/app.js') }}" async></script>--}}
     @else
-        <script src="{{ secure_asset('/scripts/app.js') }}" async></script>
+        {{--<script src="{{ secure_asset('/scripts/app.js') }}" async></script>--}}
     @endif
 @stop
