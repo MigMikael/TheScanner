@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ScanController extends Controller
 {
@@ -17,6 +18,7 @@ class ScanController extends Controller
     ];
     public function scanPosition($position)
     {
+        //Log::info(getenv("APP_ENV"));
         return view('scan', [
             'position' => $position,
             'urls' => 'http://pi.cp.su.ac.th/PI/QR/post_request.php'
@@ -25,8 +27,12 @@ class ScanController extends Controller
 
     public function passScanResult(Request $request)
     {
-        $position = $request->get('position');
-        $user_token = $request->get('user_token');
+        Log::info(getenv("APP_ENV"));
+        //$position = $request->get('position');
+        //$user_token = $request->get('user_token');
+
+        $position = 7;
+        $user_token = 'aljsdlfajsdlfkjaslf';
 
         $curl = curl_init();
 
