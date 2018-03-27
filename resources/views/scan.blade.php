@@ -67,7 +67,7 @@
                     onEscape: true
                 });
                 //var urls = 'http://localhost:8000/pass_scan_result';
-                var urls = 'pi.cp.su.ac.th/PI/QR/post_request.php';
+                var urls = 'http://pi.cp.su.ac.th/PI/QR/post_request.php';
                 @if ($position == 'Booth1')
                 var position_id = 1;
                 @elseif ($position == 'Booth2')
