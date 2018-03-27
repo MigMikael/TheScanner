@@ -51,7 +51,7 @@
         <meta name="msapplication-TileImage" content="{{ secure_asset('/images/icons8-qr-code-144.png') }}">
         <meta name="msapplication-TileColor" content="#2F3BA2">
     @endif
-    {{--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">--}}
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     @yield('style')
 </head>
