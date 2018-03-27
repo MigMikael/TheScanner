@@ -63,14 +63,13 @@
             var request = $.ajax({
                 url: urls,
                 type: 'post',
-                dataType: 'jsonp',
                 data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
             });
 
             request.done(function (response, textStatus, jqXHR){
                 console.log("status : " + textStatus);
                 console.log("data : " + response);
-                dialog.find('.bootbox-body').html('<div class="text-center" style="font-size: 60px">SUCCESS</div>');
+                dialog.find('.bootbox-body').html('<div class="text-center" style="font-size: 80px">SUCCESS</div>');
                 dialog.modal('hide');
             });
 
@@ -79,7 +78,7 @@
                     "The following error occurred: "+
                     textStatus, errorThrown
                 );
-                dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 60px">FAIL</div>');
+                dialog.find('.bootbox-body').html('<div class="text-center" style="color: #FF0000;font-size: 80px">FAIL</div>');
                 //dialog.modal('hide');
             });
 
