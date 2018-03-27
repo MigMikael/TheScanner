@@ -67,7 +67,7 @@
                     @elseif ($position == 'Booth5')
                         <input type="hidden" name="position" value="5">
                     @elseif ($position == 'Course')
-                        <input type="hidden" name="position" value="6">;
+                        <input type="hidden" name="position" value="6">
                     @elseif ($position == 'Register')
                         <input type="hidden" name="position" value="7">
                     @endif

@@ -105,6 +105,10 @@
                     <a class="nav-link" href="{{ url('/scan/Course') }}">Course</a>
                 </li>
                 @endif
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/MigMikael/TheScanner/blob/master/readme.md#วิธีการใช้งาน">วิธีใช้</a>
+                </li>
             </ul>
         </div>
     </nav>
