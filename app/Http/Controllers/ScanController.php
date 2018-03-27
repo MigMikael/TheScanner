@@ -19,6 +19,7 @@ class ScanController extends Controller
     {
         return view('scan', [
             'position' => $position,
+            'urls' => 'http://pi.cp.su.ac.th/PI/QR/post_request.php'
         ]);
     }
 

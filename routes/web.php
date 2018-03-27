@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('scan', ['position' => 'Register']);
+    return view('scan', ['position' => 'Register', 'urls' => 'http://pi.cp.su.ac.th/PI/QR/post_request.php']);
 });
 
 Route::get('scan/{position}', 'ScanController@scanPosition');
