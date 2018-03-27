@@ -42,7 +42,7 @@
             <div class="col-lg-12 text-center">
                 <hr>
                 <p>Scanned Text</p>
-                <form action="{{ url('api/pass_scan_result') }}" method="post">
+                <form action="http://pi.cp.su.ac.th/PI/QR/post_request.php" method="post">
                     <div class="form-group">
                         <textarea id="scannedTextMemo" name="user_token" rows="3" readonly></textarea>
                     </div>
