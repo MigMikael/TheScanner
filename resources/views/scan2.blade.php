@@ -8,7 +8,7 @@
             background-color: #d6f7eb;
         }
         textarea {
-            width: 100%;
+            width: 80%;
         }
         .qrscanner {
             width: 100%;
@@ -40,8 +40,7 @@
                 <div class="qrscanner" id="scanner"></div>
             </div>
             <div class="col-lg-12 text-center">
-                <hr>
-                <p>Scanned Text</p>
+                <br>
                 <form action="http://pi.cp.su.ac.th/PI/QR/post_request.php" method="post">
                     <div class="form-group">
                         <textarea id="scannedTextMemo" name="user_token" rows="2" readonly></textarea>
