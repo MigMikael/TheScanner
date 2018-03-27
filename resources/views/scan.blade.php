@@ -43,7 +43,7 @@
                 <hr>
                 <p>Scanned Text</p>
                 <textarea id="scannedTextMemo" rows="3" readonly></textarea>
-                <button class="btn btn-success btn-lg" type="submit">Send</button>
+                {{--<button class="btn btn-success btn-lg" type="submit">Send</button>--}}
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
             var position_id = 4;
             @elseif ($position == 'Booth5')
             var position_id = 5;
-            @elseif ($position == 'Booth6')
+            @elseif ($position == 'Course')
             var position_id = 6;
             @elseif ($position == 'Register')
             var position_id = 7;

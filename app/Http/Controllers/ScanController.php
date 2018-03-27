@@ -13,12 +13,11 @@ class ScanController extends Controller
         'Booth3' => 3,
         'Booth4' => 4,
         'Booth5' => 5,
-        'Booth6' => 6,
+        'Course' => 6,
         'Register' => 7,
     ];
     public function scanPosition($position)
     {
-        //Log::info(getenv("APP_ENV"));
         return view('scan2', [
             'position' => $position,
         ]);
@@ -26,12 +25,8 @@ class ScanController extends Controller
 
     public function passScanResult(Request $request)
     {
-        //Log::info(getenv("APP_ENV"));
         $position = $request->get('position');
         $user_token = $request->get('user_token');
-
-        //$position = 7;
-        //$user_token = 'aljsdlfajsdlfkjaslf';
 
         $curl = curl_init();
 
