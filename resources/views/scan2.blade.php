@@ -3,24 +3,36 @@
 @section('style')
     <style>
         body {
+            height: 100vh;
             font-family: 'Kanit', sans-serif;
-            color: #40826d;
-            background-color: #d6f7eb;
+            color: #FFFFFF;
+            /*background-color: #d6f7eb;*/
+            /*background: linear-gradient(rgb(0,122,109), rgb(122,188,69));*/
+            background-image: -webkit-linear-gradient(top, rgb(122,188,69) 0%, rgb(0,122,109) 100vh);
         }
         textarea {
-            width: 80%;
+            width: 100%;
+            text-align: center;
+            background-color: #FFF59D;
+            border-style: none;
+            border-color: Transparent;
         }
         .qrscanner {
             width: 100%;
             height: 40vh;
-            border: solid;
+            border: solid #FFF59D;
             overflow: hidden;
+            background: #FFF59D;
         }
         .first-row {
             padding-top: 4%;
         }
         .bg-green {
-            background-color: #40826d!important;
+            background-color: #757575!important;
+        }
+
+        .btn{
+            width: 100%;
         }
     </style>
 @stop
@@ -40,10 +52,9 @@
                 <div class="qrscanner" id="scanner"></div>
             </div>
             <div class="col-lg-12 text-center">
-                <br>
                 <form action="http://pi.cp.su.ac.th/PI/QR/post_request.php" method="post">
                     <div class="form-group">
-                        <textarea id="scannedTextMemo" name="user_token" rows="2" readonly></textarea>
+                        <textarea id="scannedTextMemo" name="user_token" rows="3" readonly></textarea>
                     </div>
                     @if ($position == 'Booth1')
                         <input type="hidden" name="position" value="1">
@@ -69,6 +80,7 @@
         function onQRCodeScanned(scannedText)
         {
             $('#scannedTextMemo').val(scannedText).css({'background-color':'#28a745', 'color':'#FFFFFF'});
+            $('#scanner').css({'background-color': 'transparent', 'border': 'none'})
         }
 
         function JsQRScannerReady()
