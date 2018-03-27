@@ -102,7 +102,7 @@
 
                 @if($position != 'Booth6')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth6') }}">Booth6</a>
+                    <a class="nav-link" href="{{ url('/scan/Course') }}">Course</a>
                 </li>
                 @endif
             </ul>
