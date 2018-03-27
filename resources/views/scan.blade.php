@@ -57,8 +57,9 @@
                 size: 'large',
                 onEscape: true
             });
-            var urls = 'https://the-scanner.herokuapp.com/api/pass_scan_result';
+            //var urls = 'https://the-scanners.herokuapp.com/api/pass_scan_result';
             //var urls = 'http://localhost:8000/pass_scan_result';
+            var urls = 'https://pi.cp.su.ac.th/PI/QR/post_request.php';
             var request = $.ajax({
                 url: urls,
                 type: 'post',
