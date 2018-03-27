@@ -63,6 +63,7 @@
             var request = $.ajax({
                 url: urls,
                 type: 'post',
+                dataType: 'jsonp',
                 data: {'position' : '{{ $position_id }}', 'user_token' : scannedText}
             });
 
