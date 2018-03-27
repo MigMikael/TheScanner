@@ -21,7 +21,7 @@ class ScanController extends Controller
         //Log::info(getenv("APP_ENV"));
         return view('scan', [
             'position' => $position,
-            'urls' => 'http://pi.cp.su.ac.th/PI/QR/post_request.php'
+            'urls' => 'https://the-scanners.herokuapp.com/pass_result.php'
         ]);
     }
 
