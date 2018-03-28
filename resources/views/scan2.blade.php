@@ -52,7 +52,7 @@
                 <div class="qrscanner" id="scanner"></div>
             </div>
             <div class="col-lg-12 text-center">
-                <form action="http://netserv.cp.su.ac.th:8080/PI/QR/post_request.php" method="post">
+                <form action="https://netserv.cp.su.ac.th:8080/PI/QR/post_request.php" method="post">
                     <div class="form-group">
                         <textarea id="scannedTextMemo" name="user_token" rows="3" readonly></textarea>
                     </div>
