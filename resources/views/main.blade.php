@@ -58,7 +58,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-green navbar-dark fixed-bottom">
-        <a class="navbar-brand" href="{{ url('/scan/'.$position) }}">{{ $position }}</a>
+        <a class="navbar-brand" href="{{ secure_url('/scan/'.$position) }}">{{ $position }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,43 +66,43 @@
             <ul class="navbar-nav">
                 @if($position != 'Register')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Register') }}">Register</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Register') }}">Register</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth1')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth1') }}">Booth1</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Booth1') }}">Booth1</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth2')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth2') }}">Booth2</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Booth2') }}">Booth2</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth3')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth3') }}">Booth3</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Booth3') }}">Booth3</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth4')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth4') }}">Booth4</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Booth4') }}">Booth4</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth5')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Booth5') }}">Booth5</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Booth5') }}">Booth5</a>
                 </li>
                 @endif
 
                 @if($position != 'Booth6')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/scan/Course') }}">Course</a>
+                    <a class="nav-link" href="{{ secure_url('/scan/Course') }}">Course</a>
                 </li>
                 @endif
 
